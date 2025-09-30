@@ -1,0 +1,78 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.grid-container {
+  display: grid;
+  min-height: 100vh;
+}
+
+/* Colores */
+.header { grid-area: header; background: #1a1a2e; color: #fff; }
+.menu   { grid-area: menu;   background: #e63946; color: #fff; }
+.hero   { grid-area: hero;   background: #457b9d; color: #fff; }
+.main   { grid-area: main;   background: #1d3557; color: #fff; }
+.banner { grid-area: banner; background: #f1c40f; }
+.extra  { grid-area: extra;  background: #2ecc71; }
+.image  { grid-area: image;  background: #a8dadc; }
+
+/* Estilo común para todos los bloques */
+.grid-container > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* 📱 Mobile */
+.grid-container {
+  grid-template-areas:
+    "header"
+    "menu"
+    "hero"
+    "main"
+    "banner"
+    "extra"
+    "image";
+  grid-template-columns: 1fr;
+}
+
+/* 📲 Tablet */
+@media (min-width: 600px) {
+  .grid-container {
+    grid-template-columns: 0.7fr 1.6fr 0.9fr; 
+    grid-template-areas:
+      "header header header"
+      "hero   hero   hero"
+      "menu   main   main"
+      "menu   banner banner"
+      "menu   extra  image";
+    grid-template-rows: 60px 2fr 1.5fr 1fr 1fr;
+  }
+}
+
+/* 🖥️ Desktop */
+@media (min-width: 1024px) {
+  .grid-container {
+    grid-template-columns: 1.4fr 0.8fr 0.8fr; 
+    grid-template-rows: 60px 2fr 1fr 1fr 1.5fr;
+    grid-template-areas:
+      "header menu   menu"
+      "hero   hero   hero"
+      "main   empty  image"
+      "main   empty  extra"
+      "banner banner banner";
+  }
+
+  /* Creamos el espacio en blanco con pseudo-elemento */
+  .grid-container::before {
+    content: "";
+    grid-area: empty;
+    background: white;
+  }
+
+  /* MAIN ocupa 2 filas */
+  .main { grid-row: 3 / span 2; }
+  .grid-container::before { grid-row: 3 / span 2; }
+}
