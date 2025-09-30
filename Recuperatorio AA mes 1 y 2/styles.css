@@ -25,7 +25,7 @@ body {
   font-weight: bold;
 }
 
-/* 📱 Mobile */
+/* Mobile */
 .grid-container {
   grid-template-areas:
     "header"
@@ -38,7 +38,7 @@ body {
   grid-template-columns: 1fr;
 }
 
-/* 📲 Tablet */
+/* Tablet */
 @media (min-width: 600px) {
   .grid-container {
     grid-template-columns: 0.7fr 1.6fr 0.9fr; 
@@ -52,7 +52,7 @@ body {
   }
 }
 
-/* 🖥️ Desktop */
+/* Desktop */
 @media (min-width: 1024px) {
   .grid-container {
     grid-template-columns: 1.4fr 0.8fr 0.8fr; 
@@ -76,3 +76,4 @@ body {
   .main { grid-row: 3 / span 2; }
   .grid-container::before { grid-row: 3 / span 2; }
 }
+
